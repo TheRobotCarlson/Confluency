@@ -2,7 +2,7 @@ from setuptools import setup
 setup(
   name = 'Confluency',
   packages = ['Confluency'], # this must be the same as the name above
-  version = '0.3',
+  version = '0.4.3',
   description = 'A simple library for accessing the Confluence REST API',
   author = 'Brian Carlson',
   author_email = 'briancarlson6174@gmail.com',
