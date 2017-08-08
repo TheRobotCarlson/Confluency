@@ -1,7 +1,7 @@
 Metadata-Version: 1.1
 Name: Confluency
-Version: 0.2
-Summary: A simple api for accessing the Confluence REST API
+Version: 0.3
+Summary: A simple library for accessing the Confluence REST API
 Home-page: https://github.com/TheRobotCarlson/Confluency
 Author: Brian Carlson
 Author-email: briancarlson6174@gmail.com

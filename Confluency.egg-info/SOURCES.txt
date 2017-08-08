@@ -1,8 +1,8 @@
 README
 setup.cfg
 setup.py
+Confluency/__init__.py
 Confluency/confluence_api.py
-Confluency/setup.py
 Confluency.egg-info/PKG-INFO
 Confluency.egg-info/SOURCES.txt
 Confluency.egg-info/dependency_links.txt

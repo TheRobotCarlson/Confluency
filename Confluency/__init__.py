@@ -1,1 +1,1 @@
-from Confluency import ConfluenceAPI
+from confluence_api import ConfluenceAPI
