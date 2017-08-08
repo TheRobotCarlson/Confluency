@@ -1,0 +1,12 @@
+Metadata-Version: 1.1
+Name: Confluency
+Version: 0.2
+Summary: A simple api for accessing the Confluence REST API
+Home-page: https://github.com/TheRobotCarlson/Confluency
+Author: Brian Carlson
+Author-email: briancarlson6174@gmail.com
+License: UNKNOWN
+Download-URL: https://github.com/TheRobotCarlson/Confluency/archive/0.1.tar.gz
+Description: UNKNOWN
+Keywords: confluence,rest,api
+Platform: UNKNOWN

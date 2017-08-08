@@ -1,9 +1,9 @@
-from distutils.core import setup
+from setuptools import setup
 setup(
   name = 'Confluency',
   packages = ['Confluency'], # this must be the same as the name above
-  version = '0.1',
-  description = 'A simple api for accessing the Confluence REST API',
+  version = '0.3',
+  description = 'A simple library for accessing the Confluence REST API',
   author = 'Brian Carlson',
   author_email = 'briancarlson6174@gmail.com',
   url = 'https://github.com/TheRobotCarlson/Confluency', # use the URL to the github repo
