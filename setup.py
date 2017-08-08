@@ -1,7 +1,7 @@
 from distutils.core import setup
 setup(
-  name = 'PyConfluence',
-  packages = ['PyConfluence'], # this must be the same as the name above
+  name = 'Pyfluence',
+  packages = ['Pyfluence'], # this must be the same as the name above
   version = '0.1',
   description = 'A simple api for accessing the Confluence REST API',
   author = 'Brian Carlson',
