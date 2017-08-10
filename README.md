@@ -11,7 +11,7 @@ pip install Confluency
 ```
 
 ## Usage
-Some examle functions are shown.  Get, add, and delete exist for each type of operation.
+Some example functions are shown.  Get, add, and delete exist for each type of operation.
 
 ```python
 from Confluency import ConfluenceApi
