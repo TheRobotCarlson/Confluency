@@ -73,21 +73,50 @@ class ConfluenceApi(object):
 
         return page_return
 
-    def add_page(self, space_key, page_name, body, ancestor_names=()):
-        _ancestors = []
+    def add_page(self, space_key, page_name, body, ancestor_names=(), with_cache=True):
 
-        for ancestor in ancestor_names:
-            _ancestors.append({"id": ancestor})
+        if len(ancestor_names) > 0:
+            _ancestors = []
+            for ancestor in ancestor_names:
+                _ancestors.append({"id": self.get_page_id(space_key=space_key, page_name=ancestor,
+                                                          with_cache=with_cache)})
 
-        payload = {"title": page_name, "version": {"number": 1},
-                   "type": "page",
-                   "space": {"key": space_key},
-                   "ancestors": _ancestors,
-                   "body": {"storage": {"value": body, "representation": "storage"}}}
+            payload = {"title": page_name, "version": {"number": 1},
+                       "type": "page",
+                       "space": {"key": space_key},
+                       "ancestors": _ancestors,
+                       "body": {"storage": {"value": body, "representation": "storage"}}}
+        else:
+            payload = {"title": page_name, "version": {"number": 1},
+                       "type": "page",
+                       "space": {"key": space_key},
+                       "body": {"storage": {"value": body, "representation": "storage"}}}
 
         page_return = self._session.post(self.CONTENT_URL, data=json.dumps(payload))
 
         return page_return.json()
+
+    def update_page_body(self, space_key, page_name, body, with_cache=True):
+        page_id = self.get_page_id(space_key=space_key, page_name=page_name, with_cache=with_cache)
+        version = self.get_page_version(space_key=space_key, page_name=page_name, with_cache=with_cache)
+
+        payload = {"title": page_name, "version": {"number": version + 1}, "type": "page",
+                   "body": {"storage": {"value": body, "representation": "storage"}}}
+
+        r = self._session.put(self.CONTENT_URL + "/" + page_id, data=json.dumps(payload))
+
+        if with_cache:
+            self.remove_from_cache(space_key=space_key, page_name=page_name)
+
+        return r.json()
+
+    def copy_page_body(self, space_key_ref, space_key, page_name, with_cache=True):
+        body = self.get_page(space_key=space_key_ref, page_name=page_name, with_cache=with_cache)["results"][0][
+            "body"]
+
+        response = self.update_page_body(space_key=space_key, page_name=page_name, body=body, with_cache=with_cache)
+
+        return response
 
     def delete_page(self, space_key, page_name, with_cache=True):
         if with_cache:
